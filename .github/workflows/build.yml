@@ -27,7 +27,7 @@ jobs:
         maven-version: '3.9.9'
 
     - name: Build with Maven
-      run: mvn -B clean install
+      run: mvn -B install
 
     - name: Test with Maven
       run: mvn -B test
