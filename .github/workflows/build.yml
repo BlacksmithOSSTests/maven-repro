@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-without-build-cache:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith
     name: Build without build cache
 
     steps:
@@ -33,7 +33,7 @@ jobs:
       run: mvn -B test
 
   build-with-build-cache:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith
     name: Build with build cache
 
     steps:
