@@ -20,6 +20,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: 'maven'
+        mvn-build-cache: true
 
     - name: Check build-cache exists
       run: |
