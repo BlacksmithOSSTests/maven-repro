@@ -44,7 +44,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-        cache: 'maven'
+        cache: 'gradle'
         mvn-build-cache: true
 
     - name: Install Maven
