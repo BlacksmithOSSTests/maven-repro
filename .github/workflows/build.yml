@@ -20,6 +20,12 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: 'maven'
+        mvn-build-cache: true
+
+    - name: Check build-cache exists
+      run: |
+        ls ~/.m2
+        ls -al ~/.m2/build-cache
 
     - name: Install Maven
       uses: stCarolas/setup-maven@v5
@@ -32,59 +38,59 @@ jobs:
     - name: Test with Maven
       run: mvn -B test
       
-  build-with-build-cache-blob-store:
-    runs-on: blacksmith
-    name: Build with build cache in blob store
+  # build-with-build-cache-blob-store:
+  #   runs-on: blacksmith
+  #   name: Build with build cache in blob store
 
-    steps:
-    - uses: actions/checkout@v3
+  #   steps:
+  #   - uses: actions/checkout@v3
 
-    - name: Set up JDK 11
-      uses: useblacksmith/setup-java@build-cache
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: 'gradle'
-        mvn-build-cache: true
+  #   - name: Set up JDK 11
+  #     uses: useblacksmith/setup-java@build-cache
+  #     with:
+  #       java-version: '11'
+  #       distribution: 'temurin'
+  #       cache: 'gradle'
+  #       mvn-build-cache: true
 
-    - name: Install Maven
-      uses: stCarolas/setup-maven@v5
-      with:
-        maven-version: '3.9.9'
+  #   - name: Install Maven
+  #     uses: stCarolas/setup-maven@v5
+  #     with:
+  #       maven-version: '3.9.9'
 
-    - name: Build with Maven
-      run: mvn -B install
+  #   - name: Build with Maven
+  #     run: mvn -B install
 
-    - name: Test with Maven
-      run: mvn -B test
+  #   - name: Test with Maven
+  #     run: mvn -B test
 
-  build-with-build-cache:
-    runs-on: blacksmith
-    name: Build with build cache
+  # build-with-build-cache:
+  #   runs-on: blacksmith
+  #   name: Build with build cache
 
-    steps:
-    - uses: actions/checkout@v3
+  #   steps:
+  #   - uses: actions/checkout@v3
 
-    - name: Set up JDK 11
-      uses: useblacksmith/setup-java@v5
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: 'maven'
+  #   - name: Set up JDK 11
+  #     uses: useblacksmith/setup-java@v5
+  #     with:
+  #       java-version: '11'
+  #       distribution: 'temurin'
+  #       cache: 'maven'
 
-    - name: Install Maven
-      uses: stCarolas/setup-maven@v5
-      with:
-        maven-version: '3.9.9'
+  #   - name: Install Maven
+  #     uses: stCarolas/setup-maven@v5
+  #     with:
+  #       maven-version: '3.9.9'
 
-    - name: Mount Maven build cache
-      uses: useblacksmith/stickydisk@v1
-      with:
-        key: maven-build-cache
-        path: ~/.m2/build-cache
+  #   - name: Mount Maven build cache
+  #     uses: useblacksmith/stickydisk@v1
+  #     with:
+  #       key: maven-build-cache
+  #       path: ~/.m2/build-cache
 
-    - name: Build with Maven
-      run: mvn -B install
+  #   - name: Build with Maven
+  #     run: mvn -B install
 
     - name: Test with Maven
       run: mvn -B test 
