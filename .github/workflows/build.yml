@@ -25,7 +25,6 @@ jobs:
     - name: Check build-cache exists
       run: |
         ls ~/.m2
-        ls -al ~/.m2/build-cache
 
     - name: Install Maven
       uses: stCarolas/setup-maven@v5
